@@ -46,7 +46,7 @@ This implementation demonstrates how core AWS services such as EC2, EFS, S3, VPC
 
 ![VPC Topology](Images/vpc-topology.png)
 ![Security Group](Images/sg-configuration.png)
-
+![Security Group](Images/sg-configuration2.png)
 ---
 
 ### Step 2: EC2 Instances
