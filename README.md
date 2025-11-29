@@ -75,6 +75,8 @@ df -h | grep share
 ```
 
 ![EFS Mount](Images/ec2-efs-mount2.png)
+![EFS Mount](Images/ec2-efs-mount3.png)
+![EFS Mount](Images/ec2-efs-mount4.png)
 
 ---
 
