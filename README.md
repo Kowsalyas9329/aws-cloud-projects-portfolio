@@ -83,7 +83,7 @@ df -h | grep share
 ### Step 4: Amazon S3 Bucket
 
 * Created a dedicated S3 bucket named `project-s3-bucket-realtimesync`.
-
+![S3 Bucket](Images/s3-bucket.png)
 ---
 
 ### Step 5: IAM Role and Policy
