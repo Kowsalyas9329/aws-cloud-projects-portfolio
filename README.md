@@ -59,7 +59,7 @@ sudo yum install -y amazon-efs-utils awscli inotify-tools
 ```
 
 ![EC2 Packages Installed](Images/ec2-packages.png)
-
+![EFS Mount](Images/ec2-efs-mount.png)
 ---
 
 ### Step 3: Amazon EFS Configuration
@@ -74,7 +74,7 @@ sudo mount -t efs fs-04b6d96d9348300af:/ /share/projects
 df -h | grep share
 ```
 
-![EFS Mount](Images/ec2-efs-mount.png)
+
 
 ---
 
