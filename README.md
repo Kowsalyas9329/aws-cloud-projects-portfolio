@@ -121,6 +121,9 @@ done &
 | Deleted file on EC2-1        | File removed from S3                              |
 | Both EC2 instances monitored | Changes reflected on both due to shared EFS mount |
 
+![results](Images/results1.png)
+![results](Images/results2.png)
+![results](Images/results2.png)
 ---
 
 ## Challenges Faced
@@ -148,16 +151,6 @@ Files modified in EFS were automatically uploaded to S3 in near real-time using 
 
 * Integrating event logging with CloudTrail.
 * Implementing version control for backup recovery.
-
----
-
-### Output Screenshots
-
-* VPC topology diagram
-* Security Group configuration
-* EC2 instances – package installation
-* EC2 instances with EFS mount
-* IAM policy JSON
 
 ---
 
