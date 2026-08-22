@@ -4,9 +4,9 @@
 
 Welcome to my **DevOps & Cloud Projects Portfolio**.
 
-This repository contains hands-on projects built to develop and demonstrate practical skills in **AWS, Linux, Python, Jenkins, CI/CD, Git, Maven, databases, and cloud automation**.
+This repository contains hands-on projects demonstrating practical experience with **AWS Cloud, Linux, Python, Git, Jenkins, CI/CD, databases, networking, and cloud automation**.
 
-Each project includes implementation details, configuration steps, code, architecture, testing, and screenshots.
+Each project includes implementation details, configuration steps, code, testing, troubleshooting, and screenshots.
 
 ---
 
@@ -14,9 +14,9 @@ Each project includes implementation details, configuration steps, code, archite
 
 ### 1. Automated File Upload Pipeline
 
-**AWS S3 → Lambda → RDS → SNS → CloudWatch**
+**Local Machine → Amazon S3 → AWS Lambda → Amazon RDS → Amazon SNS**
 
-An event-driven AWS data ingestion pipeline that automatically uploads CSV files from a local machine to Amazon S3, triggers AWS Lambda processing, stores the data in Amazon RDS, and sends notifications through Amazon SNS.
+An event-driven AWS data ingestion pipeline that automatically uploads CSV files from a local machine to Amazon S3. An S3 event triggers Lambda to process the file and insert the data into Amazon RDS, with SNS notifications for success or failure.
 
 **Technologies:**
 
@@ -33,19 +33,24 @@ An event-driven AWS data ingestion pipeline that automatically uploads CSV files
 
 ---
 
-### 2. [Project Name]
+### 2. EFS → S3 Near-Real-Time File Synchronization
 
-**[Architecture / Technology Flow]**
+**EC2 → EFS → inotify → AWS CLI → Amazon S3**
 
-[Add a short 2–3 sentence description of your second project here.]
+A centralized AWS file-sharing and backup solution using Amazon EFS across two EC2 instances. Linux `inotify` monitors file changes on the shared EFS filesystem and automatically synchronizes changes to Amazon S3 using the AWS CLI.
 
 **Technologies:**
 
-* [Technology]
-* [Technology]
-* [Technology]
+* Amazon EC2
+* Amazon EFS
+* Amazon S3
+* Amazon VPC
+* AWS IAM
+* Linux
+* AWS CLI
+* inotify
 
-[View Project →](./Project-2/)
+[View Project →](./EFS-S3-Realtime-Sync/)
 
 ---
 
@@ -53,7 +58,7 @@ An event-driven AWS data ingestion pipeline that automatically uploads CSV files
 
 **GitHub → Jenkins Controller → Jenkins Agent → Maven → WAR → Tomcat**
 
-A CI/CD pipeline that automatically retrieves a Java application from GitHub, builds it using Maven, packages it as a WAR file, and deploys it to Apache Tomcat.
+A CI/CD pipeline that retrieves a Java application from GitHub, builds it using Maven, packages it as a WAR file, and automatically deploys the application to Apache Tomcat.
 
 **Technologies:**
 
@@ -74,20 +79,24 @@ A CI/CD pipeline that automatically retrieves a Java application from GitHub, bu
 
 ### Cloud & AWS
 
+* Amazon EC2
 * Amazon S3
+* Amazon EFS
 * AWS Lambda
 * Amazon RDS
 * Amazon SNS
 * AWS CloudWatch
 * AWS IAM
+* Amazon VPC
 
 ### DevOps & CI/CD
 
 * Jenkins
-* CI/CD Pipelines
+* Jenkins Pipelines
 * Git & GitHub
 * Maven
 * Apache Tomcat
+* CI/CD automation
 
 ### Programming & Automation
 
@@ -95,13 +104,18 @@ A CI/CD pipeline that automatically retrieves a Java application from GitHub, bu
 * Groovy
 * Bash
 * SQL
+* AWS CLI
+* Linux automation
 
-### Systems
+### Infrastructure & Systems
 
-* Linux
-* Networking
-* Cloud Infrastructure
-* Application Deployment
+* Linux system administration
+* VPC networking
+* Security Groups
+* IAM policies
+* EFS/NFS
+* Application deployment
+* Cloud infrastructure
 
 ---
 
@@ -116,7 +130,7 @@ devops-cloud-projects-portfolio/
 │   ├── README.md
 │   └── images/
 │
-├── Project-2/
+├── EFS-S3-Realtime-Sync/
 │   ├── README.md
 │   └── images/
 │
@@ -127,11 +141,21 @@ devops-cloud-projects-portfolio/
 
 ---
 
-## Purpose
+## Project Focus
 
-These projects are part of my hands-on learning journey toward a career in **Cloud Engineering and DevOps**.
+These projects were built to develop practical hands-on experience in:
 
-The goal is to build practical experience by designing, implementing, troubleshooting, and documenting real-world cloud and DevOps workflows.
+* Cloud Engineering
+* DevOps
+* AWS infrastructure
+* Linux administration
+* CI/CD
+* Cloud automation
+* Networking
+* Application deployment
+* Monitoring and troubleshooting
+
+The projects focus on building solutions manually and understanding how the underlying AWS and DevOps components work together.
 
 ---
 
@@ -143,14 +167,14 @@ Planned areas for future projects include:
 * Docker containerization
 * Kubernetes
 * GitHub Actions
-* Advanced AWS networking
+* AWS networking
 * Monitoring and observability
-* CI/CD automation
+* Advanced CI/CD automation
 
 ---
 
-## Contact
+## Goal
 
-**Kowsalya Selvaraj**
+The goal of this portfolio is to demonstrate practical, hands-on experience designing, implementing, troubleshooting, and documenting **AWS Cloud and DevOps solutions**.
 
-GitHub: [@Kowsalyas9329](https://github.com/Kowsalyas9329)
+Each project is documented separately with its architecture, implementation steps, configuration, testing results, challenges, and lessons learned.
