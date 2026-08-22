@@ -37,6 +37,7 @@ The implementation demonstrates how AWS services such as S3, Lambda, RDS, SNS, C
 ### Step 1: S3 Bucket Setup
 Created an S3 bucket "my-data-pipeline-bucket-for-automated-file-upload" to store uploaded CSV files.
 Enabled event notifications to trigger Lambda functions on object creation.
+
 ![S3 Bucket Configuration](images/s3_bucket.png)
 ---
 
