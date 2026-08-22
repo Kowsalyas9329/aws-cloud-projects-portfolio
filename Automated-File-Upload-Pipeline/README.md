@@ -37,13 +37,13 @@ The implementation demonstrates how AWS services such as S3, Lambda, RDS, SNS, C
 ### Step 1: S3 Bucket Setup
 Created an S3 bucket "my-data-pipeline-bucket-for-automated-file-upload" to store uploaded CSV files.
 Enabled event notifications to trigger Lambda functions on object creation.
-![S3 Bucket Configuration](Images/s3_bucket.png)
+![S3 Bucket Configuration](images/s3_bucket.png)
 ---
 
 ### Step 2: Lambda Function
 Developed a Python Lambda function to process CSV files.
 Configured Lambda environment variables: DB_HOST, DB_NAME, DB_USER, DB_PASSWORD, SNS_TOPIC_ARN.
-![lambda Function Configuration](Images/lambda_function.png)
+![lambda Function Configuration](images/lambda_function.png)
 
 ### Function logic:
 1. Retrieves the uploaded file from S3.
@@ -151,7 +151,7 @@ CREATE TABLE customers (
 );
 ```
 
-![RDS Configuration](Images/rds_configuration.png)
+![RDS Configuration](images/rds_configuration.png)
 ---
 
 ### Step 4: Local File Upload Script
@@ -168,7 +168,7 @@ s3.upload_file(file_path, bucket_name, 'uploads/customers.csv')
 print("Upload successful.")
 ```
 
-![Local File Upload Python Script](Images/local_file_upload_script.png)
+![Local File Upload Python Script](images/local_file_upload_script.png)
 
 ---
 
@@ -199,10 +199,10 @@ Ensured Lambda can access RDS securely (VPC configuration if required).
 | Lambda completes | SNS sends success notification |
 | Lambda fails | SNS sends failure notification |
 | Logs | CloudWatch logs capture all events for auditing |
-![Testing and Validation](Images/testing_validation_1.png)
-![Testing and Validation](Images/testing_validation_2.png)
-![Testing and Validation](Images/testing_validation_3.png)
-![Testing and Validation](Images/testing_validation_4.png)
+![Testing and Validation](images/testing_validation_1.png)
+![Testing and Validation](images/testing_validation_2.png)
+![Testing and Validation](images/testing_validation_3.png)
+![Testing and Validation](images/testing_validation_4.png)
 
 ---
 
