@@ -50,8 +50,7 @@ A centralized AWS file-sharing and backup solution using Amazon EFS across two E
 * AWS CLI
 * inotify
 
-[View Project →](./EFS-S3 Realtime Sync Project/)
-
+[View Project →](./EFS-S3%20Realtime%20Sync%20Project/)
 ---
 
 ### 3. Jenkins CI/CD Pipeline: Controller → Agent → Tomcat
