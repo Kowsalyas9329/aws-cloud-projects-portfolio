@@ -43,6 +43,7 @@ Enabled event notifications to trigger Lambda functions on object creation.
 ### Step 2: Lambda Function
 Developed a Python Lambda function to process CSV files.
 Configured Lambda environment variables: DB_HOST, DB_NAME, DB_USER, DB_PASSWORD, SNS_TOPIC_ARN.
+
 ![lambda Function Configuration](images/lambda_function.png)
 
 ### Function logic:
@@ -199,6 +200,8 @@ Ensured Lambda can access RDS securely (VPC configuration if required).
 | Lambda completes | SNS sends success notification |
 | Lambda fails | SNS sends failure notification |
 | Logs | CloudWatch logs capture all events for auditing |
+
+
 ![Testing and Validation](images/testing_validation_1.png)
 ![Testing and Validation](images/testing_validation_2.png)
 ![Testing and Validation](images/testing_validation_3.png)
