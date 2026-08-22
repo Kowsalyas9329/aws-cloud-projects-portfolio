@@ -155,7 +155,7 @@ Configuration file:
 
 Tomcat was restarted after making the configuration changes.
 
-![Tomcat Login](images/tomcat_login.png)
+![Tomcat Login](images/Tomcat_login.png)
 
 ![Tomcat Manager Dashboard](images/tomcat_manager_dashboard.png)
 
