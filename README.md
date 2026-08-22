@@ -1,160 +1,156 @@
-# EFS-S3 Realtime Sync Project
+# DevOps & Cloud Projects Portfolio
 
-## Introduction
+## About
 
-This project focuses on designing and implementing a centralized file-sharing and backup system within AWS using a custom Virtual Private Cloud (VPC).
-The goal is to ensure that files shared between two EC2 instances using Amazon Elastic File System (EFS) are automatically synchronized with an Amazon S3 bucket in near real-time.
+Welcome to my **DevOps & Cloud Projects Portfolio**.
 
-This implementation demonstrates how core AWS services such as EC2, EFS, S3, VPC, and IAM can be combined to provide a scalable, cost-effective, and automated cloud storage solution without using advanced automation services like Lambda or DataSync.
+This repository contains hands-on projects built to develop and demonstrate practical skills in **AWS, Linux, Python, Jenkins, CI/CD, Git, Maven, databases, and cloud automation**.
 
----
-
-## Objectives
-
-* Design a custom AWS VPC for secure networking and internet connectivity.
-* Launch two EC2 instances in different subnets and mount a common EFS file system.
-* Create an Amazon S3 bucket to store and back up all project files from EFS.
-* Implement a near real-time sync mechanism between EFS and S3 using `inotify` and AWS CLI.
-* Enforce least-privilege IAM permissions for secure and controlled access.
-* Enable bi-directional sync, ensuring changes from either EC2 instance are reflected in S3.
+Each project includes implementation details, configuration steps, code, architecture, testing, and screenshots.
 
 ---
 
-## AWS Services Used
+## Projects
 
-| Service    | Purpose / Functionality                                                                                    |
-| ---------- | ---------------------------------------------------------------------------------------------------------- |
-| Amazon VPC | Provides an isolated virtual network environment for EC2, EFS, and S3 communication                        |
-| Amazon EC2 | Compute instances where EFS is mounted and file sync operations are performed                              |
-| Amazon EFS | Shared file system accessible by multiple EC2 instances for centralized file sharing                       |
-| Amazon S3  | Object storage used to mirror and back up files from EFS in near real-time                                 |
-| AWS IAM    | Creates roles and policies following least-privilege principles, allowing EC2 to interact securely with S3 |
+### 1. Automated File Upload Pipeline
+
+**AWS S3 → Lambda → RDS → SNS → CloudWatch**
+
+An event-driven AWS data ingestion pipeline that automatically uploads CSV files from a local machine to Amazon S3, triggers AWS Lambda processing, stores the data in Amazon RDS, and sends notifications through Amazon SNS.
+
+**Technologies:**
+
+* Amazon S3
+* AWS Lambda
+* Amazon RDS
+* Amazon SNS
+* AWS CloudWatch
+* AWS IAM
+* Python
+* SQL
+
+[View Project →](./Automated-File-Upload-Pipeline/)
 
 ---
 
-## Project Implementation Details
+### 2. [Project Name]
 
-### Step 1: VPC Setup
+**[Architecture / Technology Flow]**
 
-* Created a custom VPC (`10.0.0.0/16`) with two public subnets in different Availability Zones.
-* Attached an Internet Gateway (IGW) for internet connectivity.
-* Configured route tables with `0.0.0.0/0 → IGW`.
-* Created security groups:
+[Add a short 2–3 sentence description of your second project here.]
 
-  * **EC2 SG**: Allowed SSH (port 22)
-  * **EFS SG**: Allowed inbound NFS (2049)
+**Technologies:**
 
-![VPC Topology](Images/vpc-topology.png)
-![Security Group](Images/sg-configuration.png)
-![Security Group](Images/sg-configuration2.png)
+* [Technology]
+* [Technology]
+* [Technology]
+
+[View Project →](./Project-2/)
+
 ---
 
-### Step 2: EC2 Instances
+### 3. Jenkins CI/CD Pipeline: Controller → Agent → Tomcat
 
-* Launched two Amazon Linux 2023 EC2 instances in separate subnets (AZ-A and AZ-B).
-* Verified internet access and installed necessary packages:
+**GitHub → Jenkins Controller → Jenkins Agent → Maven → WAR → Tomcat**
 
-```bash
-sudo yum install -y amazon-efs-utils awscli inotify-tools
+A CI/CD pipeline that automatically retrieves a Java application from GitHub, builds it using Maven, packages it as a WAR file, and deploys it to Apache Tomcat.
+
+**Technologies:**
+
+* Jenkins
+* GitHub
+* Java
+* Maven
+* Apache Tomcat
+* Linux
+* Groovy
+* cURL
+
+[View Project →](./Jenkins-CI-CD-Tomcat-Deployment/)
+
+---
+
+## Skills Demonstrated
+
+### Cloud & AWS
+
+* Amazon S3
+* AWS Lambda
+* Amazon RDS
+* Amazon SNS
+* AWS CloudWatch
+* AWS IAM
+
+### DevOps & CI/CD
+
+* Jenkins
+* CI/CD Pipelines
+* Git & GitHub
+* Maven
+* Apache Tomcat
+
+### Programming & Automation
+
+* Python
+* Groovy
+* Bash
+* SQL
+
+### Systems
+
+* Linux
+* Networking
+* Cloud Infrastructure
+* Application Deployment
+
+---
+
+## Repository Structure
+
+```text
+devops-cloud-projects-portfolio/
+│
+├── README.md
+│
+├── Automated-File-Upload-Pipeline/
+│   ├── README.md
+│   └── images/
+│
+├── Project-2/
+│   ├── README.md
+│   └── images/
+│
+└── Jenkins-CI-CD-Tomcat-Deployment/
+    ├── README.md
+    └── images/
 ```
 
-![EC2 Packages Installed](Images/ec2-packages.png)
-![EFS Mount](Images/ec2-efs-mount.png)
 ---
 
-### Step 3: Amazon EFS Configuration
+## Purpose
 
-* Created a new EFS file system within the same VPC.
-* Created mount targets in both subnets.
-* On both EC2s:
+These projects are part of my hands-on learning journey toward a career in **Cloud Engineering and DevOps**.
 
-```bash
-sudo mkdir -p /share/projects
-sudo mount -t efs fs-04b6d96d9348300af:/ /share/projects
-df -h | grep share
-```
-
-![EFS Mount](Images/ec2-efs-mount2.png)
-![EFS Mount](Images/ec2-efs-mount3.png)
-![EFS Mount](Images/ec2-efs-mount4.png)
+The goal is to build practical experience by designing, implementing, troubleshooting, and documenting real-world cloud and DevOps workflows.
 
 ---
 
-### Step 4: Amazon S3 Bucket
+## Future Projects
 
-* Created a dedicated S3 bucket named `project-s3-bucket-realtimesync`.
-![S3 Bucket](Images/s3-bucket.png)
----
+Planned areas for future projects include:
 
-### Step 5: IAM Role and Policy
-
-* Created an IAM role `EC2Realtimesync` and attached an inline policy allowing necessary S3 actions.
-* Attached this role to both EC2 instances.
-
-![IAM Policy](Images/iam-policy.png)
-
----
-
-### Step 6: Near Real-Time Sync Using inotify + AWS CLI
-
-```bash
-nohup inotifywait -m -r -e create -e modify -e moved_to -e moved_from -e delete -e delete_self /share/projects --format '%e %w%f' | while read EVENT FILE; do
-    if [[ "$EVENT" =~ CREATE|MODIFY|MOVED_TO ]]; then
-        aws s3 cp "$FILE" s3://project-s3-bucket-realtimesync/"${FILE#/share/projects/}" 2>/dev/null
-    elif [[ "$EVENT" =~ DELETE|MOVED_FROM|DELETE_SELF ]]; then
-        aws s3 rm s3://project-s3-bucket-realtimesync/"${FILE#/share/projects/}" 2>/dev/null
-    fi
-done &
-```
-
-* `inotifywait` monitors `/share/projects` for any file changes.
-* Changes automatically trigger `aws s3` to update S3, ensuring near real-time sync.
+* AWS Infrastructure as Code with Terraform
+* Docker containerization
+* Kubernetes
+* GitHub Actions
+* Advanced AWS networking
+* Monitoring and observability
+* CI/CD automation
 
 ---
 
-### Step 7: Testing and Validation
+## Contact
 
-| Action                       | Expected Result                                   |
-| ---------------------------- | ------------------------------------------------- |
-| Created file on EC2-1        | File appeared in S3 within seconds                |
-| Modified file on EC2-2       | Updated version synced to S3                      |
-| Deleted file on EC2-1        | File removed from S3                              |
-| Both EC2 instances monitored | Changes reflected on both due to shared EFS mount |
+**Kowsalya Selvaraj**
 
-![results](Images/results1.png)
-![results](Images/results2.png)
-![results](Images/results3.png)
----
-
-## Challenges Faced
-
-* IAM permission errors initially due to missing `ListBucket` access. Solved by updating IAM policy.
-* Tuning `inotify` parameters was needed for recursive monitoring.
-
----
-
-## Lessons Learned
-
-* Learned how to integrate core AWS services manually without managed automation tools.
-* Understood the importance of least-privilege IAM policies for security.
-* `inotifywait` + `aws s3 sync` is a simple yet powerful solution for near real-time replication.
-* Gained hands-on experience with VPC networking, EFS mounts, and CLI-based automation.
-
----
-
-## Conclusion
-
-This project successfully implemented a centralized file-sharing and synchronization system using only EC2, EFS, S3, VPC, and IAM.
-Files modified in EFS were automatically uploaded to S3 in near real-time using an event-driven approach (`inotify + AWS CLI`).
-
-**Future Improvements:**
-
-* Integrating event logging with CloudTrail.
-* Implementing version control for backup recovery.
-
----
-
-### Results
-
-All objectives achieved: secure architecture, minimal service usage, bi-directional synchronization.
-
+GitHub: [@Kowsalyas9329](https://github.com/Kowsalyas9329)
