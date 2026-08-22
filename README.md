@@ -50,7 +50,7 @@ A centralized AWS file-sharing and backup solution using Amazon EFS across two E
 * AWS CLI
 * inotify
 
-[View Project →](./EFS-S3-Realtime-Sync/)
+[View Project →](./EFS-S3 Realtime Sync/)
 
 ---
 
